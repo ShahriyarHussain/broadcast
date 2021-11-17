@@ -15,10 +15,11 @@ import java.util.List;
 
 public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
-    public int SELECTED_OPTION = 0;
+    
     public String CHOSEN_OPTION;
-    public static final String OPTION1 = "HELLO", OPTION2 = "NOLLO";
-
+    public static final String ACTIVITY_MESSAGE = "HELLO";
+    private int INDEX = 0;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         this.CHOSEN_OPTION = parent.getItemAtPosition(position).toString();
-        Log.d("ASDFASE", CHOSEN_OPTION);
+        if (this.CHOSEN_OPTION.contains("WiFi")) this.INDEX = 1;
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -47,14 +48,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     public void goToNextActivity(View view) {
         List<Intent> intents = Arrays.asList(
-                new Intent(this, UserActivity.class).putExtra(OPTION1,CHOSEN_OPTION),
-                new Intent(this, FinalActivity.class).putExtra(OPTION1,CHOSEN_OPTION));
-        if (CHOSEN_OPTION == null) Log.d("test", "null");
-        else {
-            Log.d("POINOOMOW", CHOSEN_OPTION+"NOTHING");
-            if (CHOSEN_OPTION.contains("WiFi")) startActivity(intents.get(1));
-            else startActivity(intents.get(0));
-        }
+                new Intent(this, UserActivity.class).putExtra(ACTIVITY_MESSAGE,CHOSEN_OPTION),
+                new Intent(this, FinalActivity.class).putExtra(ACTIVITY_MESSAGE,CHOSEN_OPTION));
+        startActivity(intents.get(this.INDEX));
     }
-
 }

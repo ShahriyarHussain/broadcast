@@ -5,5 +5,5 @@
         <item>WiFi RTT state change receiver</item>
         <item>System battery notification receiver</item>
     </string-array>
-    <string name="button1">Next</string>
+    <string name="btnTxtNext">Next</string>
 </resources>
