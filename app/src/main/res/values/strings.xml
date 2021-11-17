@@ -6,4 +6,7 @@
         <item>System battery notification receiver</item>
     </string-array>
     <string name="btnTxtNext">Next</string>
+    <string name="connectionMsg1">Network Connection Available But Wifi Not Connected</string>
+    <string name="connectionMsg2">Network Connection Available and Wifi Connected</string>
+    <string name="connectionMsg3">Network Connection Unavailable</string>
 </resources>
